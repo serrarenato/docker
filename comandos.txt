@@ -1,0 +1,15 @@
+-- buildar a imager com o nome ex-simple-build (-t)
+docker image build -t ex-simple-build . 
+
+-- ver a imagem gerada
+docker image ls
+
+-- rodar a imagem gerada na porta 80
+docker container run -p 80:80 ex-simple-build
+
+--- echo dentro da maquina do docker
+docker container run ex-build-arg bash -c 'echo $S3_BUCKET'
+
+-- buildar a imager com o nome ex-build-arg alterando a variavel(--build-arg)
+docker image build  --build-arg  S3_BUCKET=myapp -t ex-build-arg . 
+
