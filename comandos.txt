@@ -13,3 +13,25 @@ docker container run ex-build-arg bash -c 'echo $S3_BUCKET'
 -- buildar a imager com o nome ex-build-arg alterando a variavel(--build-arg)
 docker image build  --build-arg  S3_BUCKET=myapp -t ex-build-arg . 
 
+-- login docker
+docker login --username=serrarenato
+
+--- docker-composer up -d (fica em segundo plano)
+
+--- subir imagem no docker hub
+docker image push serrarenato/simple-build:1.0
+
+-- redes 
+	 --net none -> sem rede
+	 docker network ls --> verificar redes do docker.
+	 docker network inspect bridge  --> inspeciona rede bridge
+	 docker container exec -it container1 ping www.google.com --> pingar de dentro do container
+	 docker network create --driver bridge rede_nova --> criar uma rede nova.
+	 docker network connect bridge container3 --> conectar a rede bridge no container3, desse modo essa rede é adicionada nao substituida.
+	 docker container exec -it container3 ifconfig --> executar o ifconfig num container
+	
+	Modo Bridge default -> tem uma proteção a mais em cada container gera um IP.
+	Modo Host --> pega as configurações da maquina, nao tem isolamento, mas tem mais velocidade.
+	 
+
+
