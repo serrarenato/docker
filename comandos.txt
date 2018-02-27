@@ -21,6 +21,10 @@ docker login --username=serrarenato
 --- subir imagem no docker hub
 docker image push serrarenato/simple-build:1.0
 
+--entrar no container UP
+
+docker exec -it  emailworkercompose_app_1 bash 
+
 -- redes 
 	 --net none -> sem rede
 	 docker network ls --> verificar redes do docker.
@@ -33,5 +37,20 @@ docker image push serrarenato/simple-build:1.0
 	Modo Bridge default -> tem uma proteção a mais em cada container gera um IP.
 	Modo Host --> pega as configurações da maquina, nao tem isolamento, mas tem mais velocidade.
 	 
+-------- docker compose
+docker-compose down	 -- parar 
+docker-compose ps -- listar
+docker-compose up -d -- run in a background
+docker-compose exec
+docker-compose exec db psql -U postgres -f /scripts/check.sql  // executar script dentro do db
+docker-compose logs -f -t
+
+
+docker-compose up -d --scale worker=3  // usado para escalar containers neste caso criou 3 containers copia de worker
+
+docker-compose logs -f -t worker //logs de um unico container
+
+
+
 
 
